@@ -1,0 +1,15 @@
+Relatório de Processamento - 2025-09-21_150845
+
+Avisos/Anotações:
+- planilha_sintetica_1.xlsx: colunas ausentes ['data', 'loja_id', 'preco_unitario'] — arquivo ignorado
+- planilha_sintetica_2.xlsx: colunas ausentes ['data', 'loja_id', 'preco_unitario'] — arquivo ignorado
+- planilha_sintetica_3.xlsx: colunas ausentes ['data', 'loja_id', 'preco_unitario'] — arquivo ignorado
+- planilha_TESTE.xlsx: 3 linha(s) inválida(s) removida(s).
+
+Linhas válidas inseridas: 1
+
+Totais por dia e loja:
+- 2025-09-16 | Loja LJ01: R$ 180.00
+
+Banco de dados: C:\Users\victo\OneDrive\Área de Trabalho\meus pe\ManyTools-Archivepy\diretorio\data\fechamento.db
+Pasta de origem: C:\Users\victo\OneDrive\Área de Trabalho\meus pe\ManyTools-Archivepy\diretorio

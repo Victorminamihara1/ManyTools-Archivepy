@@ -1,0 +1,9 @@
+{
+  "gmail_query": "newer_than:7d has:attachment filename:xlsx",
+  "organizer_rules": {
+    "Imagens": [".jpg", ".jpeg", ".png", ".gif"],
+    "Documentos": [".pdf", ".docx", ".txt"],
+    "Planilhas": [".xls", ".xlsx", ".csv"],
+    "Compactados": [".zip", ".rar"]
+  }
+}
