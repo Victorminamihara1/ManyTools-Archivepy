@@ -1,144 +1,141 @@
-Projeto RPA — Gmail → Planilhas → SQLite → Relatórios
-Este projeto implementa um RPA (Robotic Process Automation) para automatizar o fluxo de fechamento de caixa diário em uma rede de lojas de autopeças.
+📌 README – Sistema de Automação com Google API e Organização de Arquivos
+📖 Descrição
 
-O sistema é composto por uma interface gráfica (GUI) e integra as seguintes etapas:
-📥 Receber planilhas de vendas via Gmail (baixando anexos .xlsx automaticamente).
+Este projeto é uma aplicação em Python com interface gráfica em PySimpleGUI, que integra serviços do Google (Gmail, Drive, Sheets) e adiciona funções de organização automática de arquivos locais.
 
+Ele foi desenvolvido para automatizar processos repetitivos, como:
 
-🧹 ETL simples: ler planilhas, validar colunas e calcular valores.
+Coletar anexos de e-mails e processá-los.
 
+Gerar relatórios em Excel.
 
-💾 Gravar no banco SQLite (fechamento.db).
+Organizar arquivos em pastas específicas do computador (por extensão, nome ou tipo definido pelo usuário).
 
+Assim, o software atua como uma central de automação pessoal, unindo e-mails, planilhas e gestão de arquivos de forma simples e intuitiva.
 
-📝 Gerar relatório de fechamento em .txt.
+🚀 Funcionalidades
 
+📧 Automação de E-mails
 
-📧 Enviar e-mail de confirmação para a gerência (com o relatório em anexo).
+Busca automática de anexos em contas Gmail.
 
+Filtragem por período, extensão ou remetente.
 
+Confirmação automática para a gerência após processar dados.
 
-🚀 Tecnologias usadas
-Python 3.11+
+📊 Manipulação de Dados
 
+Leitura de planilhas .xlsx com pandas e openpyxl.
 
-PySimpleGUI — interface gráfica
+Tratamento e análise de dados.
 
+Exportação de relatórios organizados.
 
-Pandas — ETL de planilhas
+🗂️ Organização de Arquivos Locais
 
+Permite escolher uma pasta do computador.
 
-SQLite — banco de dados local
+Reorganiza arquivos automaticamente em subpastas de acordo com:
 
+Extensão (.pdf, .jpg, .xlsx etc.).
 
-Google Gmail API — baixar e enviar e-mails
+Tipo de documento (imagens, textos, planilhas).
 
+Configuração personalizada definida pelo usuário.
 
-Google OAuth 2.0 — autenticação segura
+🖥️ Interface Gráfica
 
+Desenvolvida em PySimpleGUI, simples e amigável.
 
+Menu intuitivo com botões de ação para cada função.
 
+⚙️ Instalação e Configuração
+1. Pré-requisitos
 
+Python 3.11+ instalado.
 
-📂 Estrutura do projeto
-projeto_rpa_gui/
-│
-├── gui.py                # Interface gráfica principal
-├── main.py               # Execução em linha de comando
-├── gmail_client.py       # Integração com Gmail API (baixar/enviar emails)
-├── google_auth.py        # Função utilitária para OAuth2
-├── ler_e_preparar.py     # ETL das planilhas (ler, validar, calcular)
-├── enviar_confirmacao.py # Função para mandar email de confirmação
-├── core.py               # Funções compartilhadas
-│
-├── planilha/             # Pasta onde as planilhas .xlsx ficam
-├── data/                 # Banco SQLite (`fechamento.db`)
-├── relatorios/           # Relatórios gerados em .txt
-│
-├── requirements.txt      # Dependências do projeto
-└── README.md             # Este arquivo
+Conta Google com permissões na API desejada (Gmail/Drive/Sheets).
 
+Dependências listadas no requirements.txt.
 
-⚙️ Instalação
-Copie os arquivos .rar no anexo
+2. Clonando o Repositório
+git clone https://github.com/SEU-USUARIO/SEU-REPO.git
+cd SEU-REPO
 
+3. Criando Ambiente Virtual
+python -m venv .venv
+.venv\Scripts\activate    # Windows
+source .venv/bin/activate # Linux/Mac
 
-Crie e ative um ambiente virtual:
+4. Instalando Dependências
+pip install -r requirements.txt
 
- python -m venv venv
-venv\Scripts\activate   # Windows
-source venv/bin/activate # Linux/Mac
+5. Configurando Credenciais
 
-Instale as dependências:
+Crie um arquivo .env na raiz do projeto com:
 
- pip install -r requirements.txt
+GOOGLE_CLIENT_ID=xxxxxxxx.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=xxxxxxxx
+GOOGLE_REDIRECT_URI=http://localhost:8080/
+GOOGLE_TOKEN_PATH=~/.cache/meuapp/google_token.json
 
 
+⚠️ Nunca compartilhe .env, token.json ou credenciais no GitHub.
 
-
-🔑 Configuração do Gmail API
-Acesse Google Cloud Console.
-
-
-Crie um projeto e ative a Gmail API.
-
-
-Crie credenciais OAuth Client ID (Desktop App).
-
-
-Baixe o arquivo credentials.json e coloque na raiz do projeto.
-
-
-Na primeira execução, o navegador abrirá pedindo login → autorize com sua conta Google.
-
-
-Isso vai gerar o arquivo token.json automaticamente.
-
-
-O token.json será usado nas próximas execuções.
-
-
-
-▶️ Como usar
-GUI
-python gui.py
-
-Selecione a pasta RAIZ (que contém planilha/).
-
-
-Ajuste a query do Gmail (ex.: newer_than:7d has:attachment filename:xlsx).
-
-
-Clique em Processar TUDO.
-
-
-Acompanhe os logs.
-
-
-Use o botão Abrir relatório para abrir o último relatório gerado.
-
-
-Linha de comando
+▶️ Uso
+Rodar o sistema
 python main.py
 
+Fluxo do Usuário
 
+Fazer login no Google (apenas na primeira vez).
 
-📑 Relatórios
-Os relatórios são salvos na pasta relatorios/ com nome no formato:
-relatorio_YYYY-MM-DD_HHMMSS.txt
+Escolher entre os módulos:
 
-Exemplo de conteúdo:
-Relatório de Processamento - 2025-09-18_14:30:07
+E-mail → baixar anexos, processar planilhas, enviar confirmações.
 
-Avisos/Anotações:
-- PlanilhaNovoPadrao_01.xlsx: colunas ausentes ['preco_unitario'] — ignorado
+Arquivos → organizar a pasta selecionada automaticamente.
 
-Linhas válidas inseridas: 106
+Exportar relatórios e salvar no formato Excel.
 
-Totais por dia e loja:
-- 2025-09-17 | Loja 101: R$ 12.345,67
-- 2025-09-17 | Loja 102: R$  8.910,11
+Encerrar pelo botão Sair.
 
-Banco de dados: C:\...\data\fechamento.db
-Pasta de origem: C:\...\projeto_rpa_gui
+📂 Estrutura de Pastas (sugestão)
+projeto/
+│-- main.py
+│-- auth_google.py
+│-- file_organizer.py
+│-- requirements.txt
+│-- .env.example
+│-- /src
+│   │-- gui.py
+│   │-- email_module.py
+│   │-- excel_module.py
+│   │-- organizer_module.py
+│-- /output
+│   │-- relatorios/
+│   │-- organizados/
 
+👨‍💻 Tecnologias Utilizadas
+
+Python 3.11+
+
+PySimpleGUI 5.x (interface gráfica)
+
+pandas + openpyxl (planilhas)
+
+google-api-python-client + google-auth (integração Google)
+
+python-dotenv (gestão de credenciais seguras)
+
+🔒 Segurança
+
+Arquivo .env deve ser usado para variáveis sensíveis.
+
+Tokens e credenciais não devem ser versionados no Git.
+
+Repositórios públicos devem usar GitHub Secrets no CI/CD.
+
+📜 Licença
+
+Este projeto é distribuído sob a licença MIT, podendo ser usado e modificado livremente, desde que mantidos os créditos originais.
