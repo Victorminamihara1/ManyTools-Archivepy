@@ -70,21 +70,11 @@ source .venv/bin/activate # Linux/Mac
 4. Instalando Dependências
 pip install -r requirements.txt
 
-5. Configurando Credenciais
-
-Crie um arquivo .env na raiz do projeto com:
-
-GOOGLE_CLIENT_ID=xxxxxxxx.apps.googleusercontent.com
-GOOGLE_CLIENT_SECRET=xxxxxxxx
-GOOGLE_REDIRECT_URI=http://localhost:8080/
-GOOGLE_TOKEN_PATH=~/.cache/meuapp/google_token.json
-
-
 ⚠️ Nunca compartilhe .env, token.json ou credenciais no GitHub.
 
 ▶️ Uso
 Rodar o sistema
-python main.py
+python gui.py
 
 Fluxo do Usuário
 
