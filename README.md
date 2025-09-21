@@ -59,7 +59,7 @@ Conta Google com permissões na API desejada (Gmail/Drive/Sheets).
 Dependências listadas no requirements.txt.
 
 2. Clonando o Repositório
-git clone https://github.com/SEU-USUARIO/SEU-REPO.git
+git clone (https://github.com/Victorminamihara1/ManyTools-Archivepy.git)
 cd SEU-REPO
 
 3. Criando Ambiente Virtual
